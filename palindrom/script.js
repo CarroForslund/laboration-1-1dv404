@@ -2,32 +2,23 @@
 
 window.onload = function(){
 	
-	var convertString = function(number){
+	var convertString = function(palindrom){
 		
-		if (!isNaN(number)){
-			number = "" + parseInt(number); //Gör så att numret räknas som heltal och räknar bort om det står 0 i början
+		var reversePalindrom;
+		
+		if (isNaN(palindrom)){
+
+			reversePalindrom = palindrom.split("").reverse().join("");
 			
-			var count0 = 0, countEven = 0, count = 0;
-			
-			for (var i = 0; i < number.length; i+=1){
-				
-				if (parseInt(number[i]) % 2 === 0){
-					if (parseInt(number[i]) === 0){
-						count0 += 1;
-					}
-					else if (parseInt(number[i]) !== 0){
-						countEven += 1;
-					}
-				}
-				else if (parseInt(number[i]) % 2 !== 0){
-					count += 1;
-				}
-				
+			if (palindrom === reversePalindrom){
+				return "Bra där! Du skrev in ett perfekt palindrom. :)";
 			}
-			return "Antal nollor: " +count0+ "<br />Antal jämna siffror: " +countEven+ "<br />Antal udda siffor: " +count;
+			else {
+				return "Tyvärr, det där var inte ett palindrom. Försök gärna igen.";
+			}
 		}
 		else {
-			throw new Error ("Du måste skriva in ett heltal.");
+			throw new Error ("Du måste skriva in en mening med bokstäver.");
 		}
 	};
 	// ------------------------------------------------------------------------------
